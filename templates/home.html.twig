@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="{{ description|default('Fit Physique') }}">
+        <meta name="keywords" content="{{ keywords|default('Activitar, unica, creative, html') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ title|default('Fit Physique') }}</title>
+        
+        {# Google Fonts #}
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+        
+        {# CSS Styles #}
+        <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/font-awesome.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/elegant-icons.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/nice-select.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/magnific-popup.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/slicknav.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{asset('user/css/StartRating.css')}}" type="text/css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    </head>
+    <body>
+
+  
+    <nav>
+        <div class="nav__bar">
+            <div class="nav__header">
+              <div class="nav__logo">
+                <a href="{{ path('homepage')}}"><img src="{{ asset('user/img/logo.png')}}" alt="logo" /></a>
+              </div>
+              <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+              </div>
+            </div>
+            
+            <ul class="nav__links" id="nav-links">
+        
+                <li class="{{ app.request.attributes.get('_route') == 'homepage' ? 'active' }}">
+                    <a href="{{ path('homepage') }}">Home</a>
+                </li>
+                <li class="{{ app.request.attributes.get('_route') == 'about_us' ? 'active' }}">
+                    <a href="{{ path('homepage') }}#about">About Us</a>
+                </li>
+                <li class="{{ app.request.attributes.get('_route') == 'app_user_timetable' ? 'active' }}">
+                    <a href="{{ path('homepage') }}#timetable">Time Table</a>
+                </li>
+                <li class="{{ app.request.attributes.get('_route') == 'pricing' ? 'active' }}">
+                    <a href="{{ path('homepage') }}#price">Pricing</a>
+                </li>
+            
+                <li class="{{ app.request.attributes.get('_route') == 'contact' ? 'active' }}">
+                    <a href="{{ path('homepage') }}#contact">News Letter</a>
+                </li>
+                {% if not app.user %}
+                    <li class="{{ app.request.attributes.get('_route') == 'login' ? 'active' }}">
+                        <a href="{{ path('app_register') }}">LOG In</a>
+                    </li>
+                
+                {% else%}
+            
+                <li class="{{ app.request.attributes.get('_route') == 'contact' ? 'active' }}">
+                    <a href="#">YOU'RE LOGGED IN AS <span style="color: green ;font-weight: bold;"> {{ app.user.username }} </a>
+                </li>
+                <li class="{{ app.request.attributes.get('_route') == 'logout' ? 'active' }}">
+                    <a href="{{ path('app_logout') }}">LOG Out</a>
+                </li>
+                {% endif %}
+            
+            </ul>
+        </div>
+    </nav>
+     
+{#updating start#}
+
+<header class="header" id="header" style="background-image: url('{{ asset('user/img/header.jpg') }}'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+    <div class="section__container header__container">
+      <div class="header__content">
+        <h1>HARD WORK</h1>
+        <h2>IS THE KEY FOR EVERY SUCCESS</h2>
+        <p>Start by taking inspirations, continue it to give inspirations</p>
+        <div class="header__btn">
+          <button class="btn btn__primary">GET STARTED</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+<section class="section__container about__container" id="about">
+    <div class="about__header">
+      <h2 class="section__header">ABOUT US</h2>
+      <p class="section__description">
+        Our mission is to inspire and support individuals in achieving their
+        health and wellness goals, regardless of their fitness level or
+        background.
+      </p>
+    </div>
+    <div class="about__grid">
+      <div class="about__card">
+        <h4>WINNER COACHES</h4>
+        <p>
+          We pride ourselves on having a team of dedicated and experienced
+          coaches who are committed to helping you succeed.
+        </p>
+      </div>
+      <div class="about__card">
+        <h4>AFFORDABLE PRICE</h4>
+        <p>
+          We believe that everyone should have access to high-quality fitness
+          facilities without breaking the bank.
+        </p>
+      </div>
+      <div class="about__card">
+        <h4>MODERN EQUIPMENTS</h4>
+        <p>
+          Stay ahead of the curve with our state-of-the-art equipment designed
+          to elevate your workout experience.
+        </p>
+      </div>
+    </div>
+</section>
+</section>
+<section class="session">
+    <div class="session__card">
+      <div class="session__card__background">
+        <img src="{{ asset('user/img/session-1.jpg')}}" alt="Bodybuilding" />
+        <div class="overlay"></div>
+      </div>
+      <h4>BODY BUILDING</h4>
+      <p>
+        Sculpt your physique and build muscle mass with our specialized bodybuilding programs at FitPhysique.
+      </p>
+      <button class="btn btn__secondary">
+        READ MORE <i class="ri-arrow-right-line"></i>
+      </button>
+    </div>
+  
+    <div class="session__card">
+      <div class="session__card__background">
+        <img src="{{ asset('user/img/session-2.jpg')}}" alt="Cardio" />
+        <div class="overlay"></div>
+      </div>
+      <h4>CARDIO</h4>
+      <p>
+        Elevate your heart rate and boost your endurance with our dynamic cardio workouts at FitPhysique.
+      </p>
+      <button class="btn btn__secondary">
+        READ MORE <i class="ri-arrow-right-line"></i>
+      </button>
+    </div>
+  
+    <div class="session__card">
+      <div class="session__card__background">
+        <img src="{{ asset('user/img/session-3.jpg')}}" alt="Fitness" />
+        <div class="overlay"></div>
+      </div>
+      <h4>FITNESS</h4>
+      <p>
+        Embrace a holistic approach to fitness with our comprehensive fitness programs at FitPhysique.
+      </p>
+      <button class="btn btn__secondary">
+        READ MORE <i class="ri-arrow-right-line"></i>
+      </button>
+    </div>
+  
+    <div class="session__card">
+      <div class="session__card__background">
+        <img src="{{ asset('user/img/session-4.jpg')}}" alt="CrossFit" />
+        <div class="overlay"></div>
+      </div>
+      <h4>CROSSFIT</h4>
+      <p>
+        Experience the ultimate full-body workout with our intense CrossFit classes at FitPhysique.
+      </p>
+      <button class="btn btn__secondary">
+        READ MORE <i class="ri-arrow-right-line"></i>
+      </button>
+    </div>
+</section>
+  
+
+<section class="section__container trainer__container" id="trainer">
+    <h2 class="section__header">MEET OUR TRAINERS</h2>
+    <div class="trainer__grid">
+      <div class="trainer__card">
+        <img src="{{ asset('user/img/trainer-1.jpg')}}" alt="trainer" />
+        <h4>DAVID WILLIAMS</h4>
+        <p>Body Builder Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="{{ asset('user/img/trainer-2.jpg')}}" alt="trainer" />
+        <h4>ROSY RIVERA</h4>
+        <p>Cardio Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="{{ asset('user/img/trainer-3.jpg')}}" alt="trainer" />
+        <h4>MATT STONIE</h4>
+        <p>Fitness Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="{{ asset('user/img/trainer-4.jpg')}}" alt="trainer" />
+        <h4>SOFIA LAUREN</h4>
+        <p>Crossfit Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="membership" id="price">
+    <div class="section__container membership__container">
+      <h2 class="section__header">MEMBERSHIP</h2>
+      <div class="membership__grid">
+        <div class="membership__card">
+          <h4>STANDARD</h4>
+          <ul>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Gym floor access and standard equipment.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Group fitness classes: yoga, Zumba, Pilates.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Complimentary fitness consultations.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Locker room and showers.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Nutritional guidance and snacks.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Member discounts on merchandise.
+            </li>
+          </ul>
+          <h3><sup>TND</sup>30<span>/month</span></h3>
+          <button class="btn btn__primary" data-pack-id="1">BUY NOW</button>
+          
+        </div>
+        <div class="membership__card">
+          <h4>PROFESSIONAL</h4>
+          <ul>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Standard Membership facilities included.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Priority booking for personal training.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Access to advanced equipment.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Complimentary fitness consultations.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Exclusive member events and workshops.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Discounts on additional services.
+            </li>
+          </ul>
+          <h3><sup>TND</sup>45<span>/month</span></h3>
+          <button class="btn btn__primary" data-pack-id="2">BUY NOW</button>
+          
+          
+        </div>
+        <div class="membership__card">
+          <h4>ULTIMATE</h4>
+          <ul>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Standard and Professional facilities included.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Unlimited access to premium amenities.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Reserved parking or valet service.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Complimentary premium fitness classes.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Customized workout plans.
+            </li>
+            <li>
+              <span><i class="ri-check-line"></i></span>
+              Priority access to guest passes and events.
+            </li>
+          </ul>
+          <h3><sup>TND</sup>60<span>/month</span></h3>
+          <button class="btn btn__primary " data-pack-id="3">BUY NOW</button>
+          <script>
+            // JavaScript to handle the redirection for all buttons
+            const buttons = document.querySelectorAll('.btn__primary');  // Select all buttons with class 'btn__primary'
+          
+            buttons.forEach(button => {
+              button.addEventListener('click', function() {
+                const packId = this.getAttribute('data-pack-id');  // Get the packId from the button's data attribute
+                window.location.href = "{{ path('subscribe', { packId: '__PACK_ID__' }) }}".replace('__PACK_ID__', packId);
+              });
+            });
+          </script>
+          
+        </div>
+      </div>
+    </div>
+</section>  
+
+<section class="classtime-section class-time-table spad" id="timetable">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2> Time Table</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="timetable-controls">
+                    <ul>
+                        <li class="active" data-tsfilter="all">all class</li>
+                        <li >crossfit</li>
+                        <li>lunge ball</li>
+                        <li>Body Builder</li>
+                        <li>Cardio</li>
+                        <li>Fitness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="classtime-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in schedules %}
+                        <tr data-class="{{ schedule.room|lower }}">
+                            <td class="workout-time">{{ schedule.startTime ? schedule.startTime|date('H:i') : '' }}</td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Monday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Tuesday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Wednesday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Thursday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Friday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Saturday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Sunday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="section__container client__container" id="client">
+    <h2 class="section__header">OUR TESTIMONIALS</h2>
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="client__card">
+            <img src="{{ asset('user/img/client-1.jpg')}}" alt="client" />
+            <div><i class="ri-double-quotes-r"></i></div>
+            <h4>Sarah Johnson</h4>
+            <p>
+              I've been a member at FitPhysique for over a year now, and I
+              couldn't be happier with my experience. The range of classes
+              offered here is impressive - from high-energy cardio sessions to
+              relaxing yoga classes, there's something for everyone.
+            </p>
+            
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <img src="{{ asset('user/img/client-2.jpg')}}" alt="client" />
+            <div><i class="ri-double-quotes-r"></i></div>
+            <h4>Michael Wong</h4>
+            <p>
+              The classes are always well-planned and engaging, and the
+              instructors do an excellent job of keeping us motivated
+              throughout. I'm so grateful to have found such a supportive and
+              inclusive gym.
+            </p>
+            
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <img src="{{ asset('user/img/client-3.jpg')}}" alt="client" />
+            <div><i class="ri-double-quotes-r"></i></div>
+            <h4>Emily Davis</h4>
+            <p>
+              I've tried many gyms in the past, but none of them compare to
+              FitPhysique. From the moment I walked through the doors, I felt
+              welcomed and supported by the staff and fellow members alike.
+            </p>
+           
+          </div>
+        </div>
+      </div>
+      <!-- Pagination (small white circles) -->
+      <div class="swiper-pagination"></div>
+    </div>
+</section>
+  
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper with custom options
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 1,           // Show 1 slide at a time
+      spaceBetween: 10,           // Space between slides
+      navigation: false,          // Remove default navigation (arrows)
+      pagination: {
+        el: '.swiper-pagination',  // Pagination element
+        clickable: true,           // Make circles clickable
+        type: 'bullets',           // Small circular dots
+        bulletClass: 'swiper-pagination-bullet', // Bullet class
+        bulletActiveClass: 'swiper-pagination-bullet-active' // Active class
+      },
+      loop: true,                 // Enable looping
+      autoplay: {
+        delay: 3000,               // Automatically slide every 3 seconds
+      },
+    });
+</script>
+
+<section class="blog" id="blog">
+    <div class="section__container blog__container">
+      <h2 class="section__header">BLOGS</h2>
+      <div class="blog__grid">
+        <div class="blog__card">
+          <img src="{{ asset('user/img/blog-1.jpg')}}" alt="blog" />
+          <h4>Fueling Your Body for Optimal Performance</h4>
+        </div>
+        <div class="blog__card">
+          <img src="{{ asset('user/img/blog-2.jpg')}}" alt="blog" />
+          <h4>A Guide to Setting and Achieving Fitness Goals</h4>
+        </div>
+        <div class="blog__card">
+          <img src="{{ asset('user/img/blog-3.jpg')}}" alt="blog" />
+          <h4>Tips and Techniques for Efficient Exercise</h4>
+        </div>
+        <div class="blog__card">
+          <img src="{{ asset('user/img/blog-4.jpg')}}" alt="blog" />
+          <h4>A Beginner's Guide to Starting Your Running Journey</h4>
+        </div>
+      </div>
+      <div class="blog__btn">
+        <button class="btn btn__primary">VIEW ALL</button>
+      </div>
+    </div>
+</section>
+
+  <section class="section__container logo__banner">
+    <img src="{{ asset('user/img/banner-1.png')}}" alt="banner" />
+    <img src="{{ asset('user/img/banner-2.png')}}" alt="banner" />
+    <img src="{{ asset('user/img/banner-3.png')}}" alt="banner" />
+    <img src="{{ asset('user/img/banner-4.png')}}" alt="banner" />
+  </section>
+
+  <footer class="footer" id="contact">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <div class="footer__logo">
+          <a href="#"><img src="{{ asset('user/img/logo.png')}}" alt="logo" /></a>
+        </div>
+        <p>
+          Welcome to FitPhysique, where we believe that every journey to
+          fitness is unique and empowering.
+        </p>
+        <ul class="footer__links">
+          <li>
+            <a href="#">
+              <span><i class="ri-map-pin-2-fill"></i></span>
+            </a>
+            <a>
+              Ghazala City
+              <span><i class="ri-map-pin-2-fill"></i></span>  
+              Ariana
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><i class="ri-phone-fill"></i></span>
+              +216 75 123 456
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><i class="ri-mail-fill"></i></span>
+              info@fitphysique.com
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>GALLERY</h4>
+        <div class="gallery__grid">
+          <img src="{{ asset('user/img/gallery-1.jpg')}}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-2.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-3.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-4.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-5.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-6.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-7.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-8.jpg') }}" alt="gallery" />
+          <img src="{{ asset('user/img/gallery-9.jpg') }}" alt="gallery" />
+          
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>NEWSLETTER</h4>
+        <p>
+          Don't miss out on the latest news and offers - sign up today and
+          join our thriving fitness community!
+        </p>
+        <form action="/">
+            <input type="text" placeholder="Enter Feedback" />
+            <button class="btn btn__primary">SEND</button>
+          </form>
+        <div class="footer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      Copyright © 2024 Fit Pysique. All rights reserved.
+    </div>
+  </footer>
+
+
+    {% block body %}
+             
+    {% endblock %}
+
+    {# Js Plugins #}
+    <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('user/js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('user/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('user/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}" ></script>   
+    <script src="{{ asset('user/js/toggler.js') }}" defer></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</div>
+</body>
+</html>
